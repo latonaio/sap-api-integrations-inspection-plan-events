@@ -1,0 +1,211 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Inspection Plan",
+		"version": "1.0",
+		"description": "A plan of the quality inspection process for materials in a plant. The following events are available for inspection plans: \n - Inspection Plan created \n - Inspection Plan  changed \n - Inspection Plan  deleted"
+	},
+	"externalDocs": {
+		"description": "Business Documentation",
+		"url": "https://help.sap.com/viewer/a08e12a754cf4891b41a01a285d065bb/2021.000/en-US/29e2a58c45e542ddb2019ddc02ab90ab.html"
+	},
+	"components": {
+		"schemas": {
+			"sap.s4.beh.inspectionplan.v1.InspectionPlan.Created.v1": {
+				"type": "object",
+				"properties": {
+					"InspectionPlan": {
+						"type": "string"
+					},
+					"InspectionPlanGroup": {
+						"type": "string"
+					}
+				}
+			},
+			"sap.s4.beh.inspectionplan.v1.InspectionPlan.Deleted.v1": {
+				"type": "object",
+				"properties": {
+					"InspectionPlan": {
+						"type": "string"
+					},
+					"InspectionPlanGroup": {
+						"type": "string"
+					}
+				}
+			},
+			"sap.s4.beh.inspectionplan.v1.InspectionPlan.Changed.v1": {
+				"type": "object",
+				"properties": {
+					"InspectionPlan": {
+						"type": "string"
+					},
+					"InspectionPlanGroup": {
+						"type": "string"
+					}
+				}
+			},
+			"CloudContext": {
+				"title": "Schema for the Cloud Events context fields.",
+				"description": "This is a schema specification for the context fields as per CloudEvent standards.",
+				"type": "object",
+				"properties": {
+					"specversion": {
+						"description": "The version of the CloudEvents specification which the event uses. This enables the interpretation of the context.",
+						"type": "string"
+					},
+					"type": {
+						"description": "Type of occurrence which has happened. Often this property is used for routing, observability, policy enforcement, etc.",
+						"type": "string",
+						"minLength": 1
+					},
+					"source": {
+						"description": "This describes the event producer.",
+						"type": "string",
+						"format": "uri-reference"
+					},
+					"subject": {
+						"description": "The subject of the event in the context of the event producer (identified by source).",
+						"type": "string",
+						"minLength": 1
+					},
+					"id": {
+						"description": "ID of the event.",
+						"type": "string",
+						"minLength": 1
+					},
+					"time": {
+						"description": "Timestamp of when the occurrence happened. Must adhere to RFC 3339.",
+						"type": "string",
+						"format": "date-time"
+					},
+					"datacontenttype": {
+						"description": "Describe the data encoding format",
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"specversion",
+					"source",
+					"type"
+				]
+			}
+		}
+	},
+	"paths": {
+		"/sap.s4.beh.inspectionplan.v1.InspectionPlan.Created.v1": {
+			"post": {
+				"tags": [
+					"Created"
+				],
+				"x-payload": "",
+				"description": "This event is raised when an inspection plan is created.",
+				"summary": "Inspection Plan Created",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.inspectionplan.v1.InspectionPlan.Created.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		},
+		"/sap.s4.beh.inspectionplan.v1.InspectionPlan.Deleted.v1": {
+			"post": {
+				"tags": [
+					"Deleted"
+				],
+				"x-payload": "",
+				"description": "This event is raised when an inspection plan is deleted.",
+				"summary": "Inspection Plan Deleted",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.inspectionplan.v1.InspectionPlan.Deleted.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		},
+		"/sap.s4.beh.inspectionplan.v1.InspectionPlan.Changed.v1": {
+			"post": {
+				"tags": [
+					"Changed"
+				],
+				"x-payload": "",
+				"description": "This event is raised when an inspection plan is changed.",
+				"summary": "Inspection Plan Changed",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"allOf": [
+									{
+										"type": "object",
+										"$ref": "#/components/schemas/CloudContext"
+									},
+									{
+										"type": "object",
+										"properties": {
+											"data": {
+												"description": "Data Fields",
+												"$ref": "#/components/schemas/sap.s4.beh.inspectionplan.v1.InspectionPlan.Changed.v1"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"default": {
+						"description": "Successful"
+					}
+				}
+			}
+		}
+	}
+}
